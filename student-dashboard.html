@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم الطالب - جامعة العين</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    <!-- Theme Selector -->
+    <div class="theme-selector">
+        <button class="theme-btn" onclick="changeTheme('black')" title="الأسود">
+            <i class="fas fa-circle" style="color: #1a1a1a;"></i>
+        </button>
+        <button class="theme-btn" onclick="changeTheme('white')" title="الأبيض">
+            <i class="fas fa-circle" style="color: #ffffff; border: 1px solid #ddd;"></i>
+        </button>
+        <button class="theme-btn" onclick="changeTheme('green')" title="الأخضر">
+            <i class="fas fa-circle" style="color: #10b981;"></i>
+        </button>
+        <button class="theme-btn" onclick="changeTheme('red')" title="الأحمر">
+            <i class="fas fa-circle" style="color: #ef4444;"></i>
+        </button>
+        <button class="theme-btn" onclick="changeTheme('purple')" title="البنفسجي">
+            <i class="fas fa-circle" style="color: #8b5cf6;"></i>
+        </button>
+        <button class="theme-btn" onclick="changeTheme('blue')" title="الأزرق">
+            <i class="fas fa-circle" style="color: #3b82f6;"></i>
+        </button>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <i class="fas fa-university"></i>
+                <h1>جامعة العين - لوحة تحكم الطالب</h1>
+            </div>
+            <div class="user-section">
+                <span class="welcome-text">مرحباً، <strong id="studentName"></strong></span>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    تسجيل الخروج
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <div class="activities-section">
+            <h2 class="section-title">
+                <i class="fas fa-star"></i>
+                الأنشطة المتاحة
+            </h2>
+
+            <div class="activities-grid">
+                <!-- Activity Card 1 -->
+                <div class="activity-card" onclick="openActivityForm('الأنشطة الطلابية')">
+                    <div class="activity-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>الأنشطة الطلابية</h3>
+                    <p>المشاركة في الفعاليات والأنشطة الطلابية المتنوعة</p>
+                    <button class="activity-btn">
+                        <span>التقديم</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+
+                <!-- Activity Card 2 -->
+                <div class="activity-card" onclick="openActivityForm('القسم الرياضي')">
+                    <div class="activity-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>القسم الرياضي</h3>
+                    <p>الانضمام إلى الفرق الرياضية والمسابقات</p>
+                    <button class="activity-btn">
+                        <span>التقديم</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+
+                <!-- Activity Card 3 -->
+                <div class="activity-card" onclick="openActivityForm('قسم المشاريع الهندسية')">
+                    <div class="activity-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>قسم المشاريع الهندسية</h3>
+                    <p>المشاركة في مشاريع الهندسة والتكنولوجيا</p>
+                    <button class="activity-btn">
+                        <span>التقديم</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+
+                <!-- Activity Card 4 -->
+                <div class="activity-card" onclick="openActivityForm('المشاريع والابتكارات الطبية')">
+                    <div class="activity-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>المشاريع والابتكارات الطبية</h3>
+                    <p>الابتكارات والمشاريع في المجال الطبي</p>
+                    <button class="activity-btn">
+                        <span>التقديم</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+
+                <!-- Activity Card 5 -->
+                <div class="activity-card" onclick="openActivityForm('الأنشطة الثقافية الطبية')">
+                    <div class="activity-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3>الأنشطة الثقافية الطبية</h3>
+                    <p>الندوات والمحاضرات الطبية والتوعوية</p>
+                    <button class="activity-btn">
+                        <span>التقديم</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+
+                <!-- Activity Card 6 -->
+                <div class="activity-card" onclick="openActivityForm('الأنشطة الفنية')">
+                    <div class="activity-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>الأنشطة الفنية</h3>
+                    <p>المعارض والفعاليات الفنية والإبداعية</p>
+                    <button class="activity-btn">
+                        <span>التقديم</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+
+                <!-- Activity Card 7 -->
+                <div class="activity-card" onclick="openActivityForm('الأنشطة الثقافية')">
+                    <div class="activity-icon">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <h3>الأنشطة الثقافية</h3>
+                    <p>الفعاليات والأنشطة الثقافية المتنوعة</p>
+                    <button class="activity-btn">
+                        <span>التقديم</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+
+                <!-- Activity Card 8 -->
+                <div class="activity-card" onclick="openActivityForm('الأنشطة التطوعية')">
+                    <div class="activity-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>الأنشطة التطوعية</h3>
+                    <p>المشاركة في الأعمال التطوعية والخدمة المجتمعية</p>
+                    <button class="activity-btn">
+                        <span>التقديم</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Employee Requests Section -->
+        <div class="employee-requests-section">
+            <h2 class="section-title">
+                <i class="fas fa-inbox"></i>
+                طلبات من الموظفين
+            </h2>
+            <div id="employeeRequestsList" class="requests-list"></div>
+        </div>
+
+        <!-- My Applications Section -->
+        <div class="my-applications-section">
+            <h2 class="section-title">
+                <i class="fas fa-clipboard-list"></i>
+                طلباتي المرسلة
+            </h2>
+            <div id="myApplicationsList" class="applications-list"></div>
+        </div>
+    </main>
+
+    <!-- Activity Application Modal -->
+    <div class="modal" id="activityModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">تقديم طلب للنشاط</h2>
+                <button class="close-btn" onclick="closeActivityForm()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form onsubmit="submitApplicationForm(event)" id="applicationForm">
+                <div class="input-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" id="appName" required>
+                </div>
+
+                <div class="input-group">
+                    <label>رقم النشاط / الكود</label>
+                    <input type="text" id="appActivityNumber" placeholder="مثال: ACT-2024-001" required>
+                </div>
+
+                <div class="input-group">
+                    <label>الكلية</label>
+                    <select id="appCollege" required>
+                        <option value="">اختر الكلية</option>
+                        <option value="كلية الهندسة">كلية الهندسة</option>
+                        <option value="كلية الطب">كلية الطب</option>
+                        <option value="كلية الصيدلة">كلية الصيدلة</option>
+                        <option value="كلية طب الأسنان">كلية طب الأسنان</option>
+                        <option value="كلية العلوم">كلية العلوم</option>
+                        <option value="كلية الآداب">كلية الآداب</option>
+                        <option value="كلية الإدارة والاقتصاد">كلية الإدارة والاقتصاد</option>
+                        <option value="كلية القانون">كلية القانون</option>
+                        <option value="كلية التربية">كلية التربية</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>القسم</label>
+                    <input type="text" id="appDepartment" placeholder="مثال: هندسة الحاسوب" required>
+                </div>
+
+                <div class="input-group">
+                    <label>التخصص</label>
+                    <input type="text" id="appSpecialization" placeholder="مثال: أمن المعلومات" required>
+                </div>
+
+                <div class="input-group">
+                    <label>رقم الهاتف</label>
+                    <input type="tel" id="appPhone" placeholder="07XX XXX XXXX" required>
+                </div>
+
+                <div class="input-group">
+                    <label>تفاصيل إضافية</label>
+                    <textarea id="appDetails" rows="4" placeholder="أي معلومات إضافية ترغب في مشاركتها..."></textarea>
+                </div>
+
+                <input type="hidden" id="activityType">
+
+                <div class="modal-actions">
+                    <button type="submit" class="submit-btn">
+                        <span>إرسال الطلب</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <button type="button" class="cancel-btn" onclick="closeActivityForm()">
+                        إلغاء
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Employee Request Details Modal -->
+    <div class="modal" id="employeeRequestModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2>تفاصيل الطلب من الموظف</h2>
+                <button class="close-btn" onclick="closeEmployeeRequestModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="employeeRequestDetails" class="details-content"></div>
+            <div class="modal-actions">
+                <button class="approve-btn" onclick="approveEmployeeRequest()">
+                    <i class="fas fa-check"></i>
+                    قبول الطلب
+                </button>
+                <button class="reject-btn" onclick="rejectEmployeeRequest()">
+                    <i class="fas fa-times"></i>
+                    رفض الطلب
+                </button>
+                <button class="cancel-btn" onclick="closeEmployeeRequestModal()">
+                    إغلاق
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script src="api-client.js"></script>
+    <script src="student-script.js"></script>
+    <script src="audio-feedback.js"></script>
+    
+    <!-- Debug Console for Mobile (Remove in production) -->
+    <script>
+        // Add Eruda for mobile debugging (only on mobile devices)
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            document.write('<script src="https://cdn.jsdelivr.net/npm/eruda"><\/script>');
+            document.write('<script>eruda.init();<\/script>');
+        }
+    </script>
+</body>
+</html>
